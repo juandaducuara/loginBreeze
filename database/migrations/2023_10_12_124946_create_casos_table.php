@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('casos', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->date('fecha_registro');
+            $table->timestamp('fecha_registro');
             $table->string('usuario_registra');
             $table->date('fecha_solucion')->nullable();
             $table->text('descripcion_caso');

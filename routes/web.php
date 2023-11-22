@@ -3,8 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CasoController;
-
-
+use App\Http\Controllers\SeguimientoController;
+use App\Models\Seguimiento;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +32,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('casos', CasoController::class);
+Route::resource('seguimiento', SeguimientoController::class);
 
 require __DIR__.'/auth.php';

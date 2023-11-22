@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Caso;
+use App\Models\User;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class CasoController extends Controller
 {
     public function index()
     {
         $casos = Caso::all();
-        return view('casos.index', compact('casos'));
+        $users = User::all();
+        return view('casos.index', compact('casos','users'));
     }
 
     public function create()
     {
-        return view('casos.create');
+        $users = User::all();
+        return view('casos.create',compact('users'));
     }
 
     public function store(Request $request)

@@ -8,11 +8,7 @@
         <div class="form-group">
             <label for="titulo">Título</label>
             <input type="text" class="form-control" id="titulo" name="titulo" value="{{ $caso->titulo }}" required>
-        </div>
-        <div class="form-group">
-            <label for="fecha_registro">Fecha de Registro</label>
-            <input type="date" class="form-control" id="fecha_registro" name="fecha_registro" value="{{ $caso->fecha_registro }}" required>
-        </div>
+        </div>        
         <div class="form-group">
             <label for="usuario_registra">Usuario que Registra</label>
             <input type="text" class="form-control" id="usuario_registra" name="usuario_registra" value="{{ $caso->usuario_registra }}" required>
