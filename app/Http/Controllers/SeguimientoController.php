@@ -25,7 +25,7 @@ class SeguimientoController extends Controller
      */
     public function create($id)
     {
-        //Para traer datos
+        
         
     }
 
@@ -38,6 +38,10 @@ class SeguimientoController extends Controller
     public function store(Request $request)
     {
         //
+        Seguimiento::create($request->all());
+        
+        return redirect()->route('casos.index')
+                         ->with('success','Seguimiento creado exitosamente.');
     }
 
     /**
@@ -49,6 +53,9 @@ class SeguimientoController extends Controller
     public function show($id)
     {
         //
+        $caso = Caso::find($id);
+        $seguimientos = Seguimiento::where('id_caso',$id)->get();
+        return view('seguimiento.show', compact('caso','seguimientos'));
     }
 
     /**
@@ -59,10 +66,7 @@ class SeguimientoController extends Controller
      */
     public function edit($id)
     {
-        //
-        $caso = Caso::find($id);
-        $seguimientos= Seguimiento::all();
-        return view('seguimiento.edit',compact('caso','seguimientos'));
+            
     }
 
     /**

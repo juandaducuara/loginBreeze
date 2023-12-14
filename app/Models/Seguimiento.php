@@ -9,8 +9,9 @@ class Seguimiento extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
+        'id_caso',
         'seguimiento_caso',
-        'id_caso'
+        'id'
+        
     ];
 }
