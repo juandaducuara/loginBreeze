@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/permisos',[Seguridad\PermisosController::class, 'index'])->name('permisos.index');
+
+    Route::get('/roles',[Seguridad\RolesController::class, 'index'])->name('roles.index');
 });
 
 Route::resource('casos', CasoController::class);

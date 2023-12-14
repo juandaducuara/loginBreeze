@@ -22,9 +22,10 @@
             
         </tbody>
     </table>
-</div>
+
 <div class="d-flex justify-content-center">
     {{ $permisos->links('vendor.pagination.bootstrap-4') }}
+</div>
 </div>
 
 
