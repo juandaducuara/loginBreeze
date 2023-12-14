@@ -25,7 +25,7 @@ class UserFactory extends Factory
             'apellido' => $this->faker->lastName,
             'user' => $this->faker->userName,
             'email' => $this->faker->unique()->safeEmail,
-            'tipo_usuario' => $this->faker->randomElement(['3', '4']),
+            'rol' => $this->faker->randomElement(['admin', 'invitado']),
             'password' => bcrypt('password'), // Cambia esto según tus necesidades
             'estado' => $this->faker->randomElement(['activo', 'inactivo']),
           

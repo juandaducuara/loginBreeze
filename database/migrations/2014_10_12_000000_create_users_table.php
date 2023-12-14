@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('apellido');
             $table->string('user')->unique();
             $table->string('email')->unique();
-            $table->integer('tipo_usuario');
+            $table->enum('rol',['admin','invitado'])->default('invitado');            
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('estado',['Activo','Inactivo'])->default('Activo');

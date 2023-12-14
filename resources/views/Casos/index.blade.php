@@ -59,4 +59,5 @@
         </tbody>
     </table>
 </div>
+</div>
 </x-app-layout>
