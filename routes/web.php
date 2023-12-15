@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CasoController;
 use App\Http\Controllers\SeguimientoController;
+use App\Http\Controllers\userController;
 use App\Models\Seguimiento;
 use App\Http\Controllers\Seguridad;
 
@@ -37,5 +38,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('casos', CasoController::class);
 Route::resource('seguimiento', SeguimientoController::class);
+Route::resource('usuarios', userController::class);
 
 require __DIR__.'/auth.php';

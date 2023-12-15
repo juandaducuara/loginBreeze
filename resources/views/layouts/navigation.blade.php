@@ -17,8 +17,13 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('casos.index')" :active="request()->routeIs('casos')">
+                    <x-nav-link :href="route('casos.index')" :active="request()->routeIs('casos.index')">
                         {{ __('Casos') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
+                        {{ __('Usuarios') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -75,8 +80,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('casos.index')" :active="request()->routeIs('casos')">
+            <x-responsive-nav-link :href="route('casos.index')" :active="request()->routeIs('casos.index')">
                 {{ __('Casos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
+                {{ __('Usuarios') }}
             </x-responsive-nav-link>
         </div>
 
