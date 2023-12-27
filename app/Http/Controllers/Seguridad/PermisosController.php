@@ -11,8 +11,7 @@ class PermisosController extends Controller
 {
     //
     public function index(){
-        $permisos = Permission::select('id','name')->orderByDesc('id')->paginate(4);
-        
+        $permisos = Permission::select('id','name')->orderBy('id')->paginate(10);        
         return view('seguridad.permisos', compact('permisos'));
     }
 }

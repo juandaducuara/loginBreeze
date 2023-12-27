@@ -3,7 +3,7 @@
         <div class="col-md-8">
             
 
-    <h1>Registrar Caso de Mesa de Ayuda</h1>
+    <h1 class="text-center mt-2">Registrar Caso de Mesa de Ayuda</h1>
     <form action="{{ route('casos.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -29,9 +29,6 @@
                 @endforeach
             </select>
         </div>
-
-
-
         <div class="form-group">
             <label for="estado">Estado</label>
             <select class="form-control" id="estado" name="estado" required>

@@ -11,6 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Bienvenido a la mesa de ayuda AOA") }}
                 </div> 
+                
                            
             </div>
         </div>

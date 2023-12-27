@@ -16,22 +16,39 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-               
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('casos.create')" :active="request()->routeIs(['casos.index','casos.create','casos.edit','casos.show'])">
+                        {{ __('Crear caso') }}
+                    </x-nav-link>
+                </div>   
+                @role('admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('casos.index')" :active="request()->routeIs(['casos.index','casos.create','casos.edit','casos.show'])">
                         {{ __('Casos') }}
                     </x-nav-link>
-                </div>
+                </div>                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs(['usuarios.index','usuarios.create','usuarios.edit','usuarios.show'])">
                         {{ __('Usuarios') }}
                     </x-nav-link>
                 </div>
+                
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('asignarRol.index')" :active="request()->routeIs('asignarRol.index')">
                         {{ __('Asignar Rol') }}
                     </x-nav-link>
+                </div>                
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                        {{ __('Roles') }}
+                    </x-nav-link>
+                </div>                
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('permisos.index')" :active="request()->routeIs('permisos.index')">
+                        {{ __('Permisos') }}
+                    </x-nav-link>
                 </div>
+                @endrole
             </div>
             
 

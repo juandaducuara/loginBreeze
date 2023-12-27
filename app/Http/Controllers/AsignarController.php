@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Seguridad;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 
-class RolesController extends Controller
+class AsignarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::select('id','name')->with('permissions')->orderBy('id')->paginate(6);
-        return view('seguridad.rol', compact('roles'));
+        //
     }
 
     /**
@@ -37,8 +34,7 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::create(['name' => $request->get('name')]);
-        return view('seguridad.rol', compact('role'));
+        //
     }
 
     /**

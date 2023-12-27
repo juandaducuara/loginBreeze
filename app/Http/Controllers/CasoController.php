@@ -8,12 +8,18 @@ use App\Models\User;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class CasoController extends Controller
-{
+{    
     public function index()
     {
         $casos = Caso::all();
         $users = User::all();
         return view('casos.index', compact('casos','users'));
+    }
+    public function listacaso()
+    {
+        $casos = Caso::all();
+        $users = User::all();
+        return ["casos"=>$casos, "usuarios"=>$users];
     }
 
     public function create()
@@ -68,5 +74,10 @@ class CasoController extends Controller
 
         return redirect()->route('casos.index')
                          ->with('success', 'Caso eliminado exitosamente.');
+    }
+    public function misCasos($user)
+    {
+        $caso = Caso::find($user);
+        return view('casos.show', compact('caso'));
     }
 }
