@@ -7,6 +7,7 @@ use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\userController;
 use App\Models\Seguimiento;
 use App\Http\Controllers\Seguridad;
+use App\Http\Controllers\Seguridad\AsignarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +40,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('casos', CasoController::class);
 Route::resource('seguimiento', SeguimientoController::class);
 Route::resource('usuarios', userController::class);
+Route::resource('asignarRol',AsignarController::class)->names('asignarRol');
 
 require __DIR__.'/auth.php';

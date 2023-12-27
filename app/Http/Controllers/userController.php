@@ -13,6 +13,11 @@ class userController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('can:crear:usuario')->only('create');
+        $this->middleware('can:eliminar:usuario')->only('destroy');
+    }
     public function index()
     {
         //
@@ -41,6 +46,15 @@ class userController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nombre' => 'required',
+            // Agrega validaciones para los demás campos aquí
+        ]);
+
+        User::create($request->all());
+
+        return redirect()->route('usuarios.index')
+                         ->with('success', 'Usuario creado exitosamente.');
     }
 
     /**
@@ -51,7 +65,8 @@ class userController extends Controller
      */
     public function show($id)
     {
-        //
+        $user= User::find($id);
+        return view('usuarios.show', compact('user'));
     }
 
     /**
@@ -62,7 +77,9 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roles = Role::all();
+        $user= User::find($id);
+        return view('usuarios.edit', compact('user','roles'));
     }
 
     /**
@@ -73,8 +90,11 @@ class userController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {    
+        $user = User::find($id);
+        $user->update($request->all());
+        return redirect()->route('usuarios.index')
+                         ->with('success', 'usuario actualizado exitosamente.');       
     }
 
     /**

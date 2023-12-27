@@ -14,12 +14,9 @@
             @foreach($permisos as $permiso)
             <tr>
                 <td>{{ $permiso->id }}</td>
-                <td>{{ $permiso->name }}</td>                
-                
-                
+                <td>{{ $permiso->name }}</td>     
             </tr>
             @endforeach
-            
         </tbody>
     </table>
 

@@ -1,63 +1,73 @@
-<x-app-layout>
-    <div class="container">
-    <div class="container d-flex justify-content-center">
-        <div class="col-md-8">
-            
+<x-app-layout>    
+    <div class="container d-flex justify-content-center mt-3">
+    <div class="col-md-8">           
 
-    <h1>Registrar Usuario de Mesa de Ayuda</h1>
-    <form action="{{ route('usuarios.store') }}" method="POST">
+    <h1 class="text-center">Registrar Usuario de Mesa de Ayuda</h1>
+    <form action="{{ route('usuarios.store') }}" method="POST" class="mt-2">
         @csrf
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        <div class="mt-2">
+            <x-input-label for="nombre">Nombre</x-input-label>
+            <x-text-input type="text" class="block mt-1 w-full" id="nombre" name="nombre" required autofocus/>
         </div> 
             
-        <div class="form-group">
+        <div class="mt-2">
             <label for="apellido">Apellido</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" required>
+            <x-text-input  type="text" class="block mt-1 w-full" id="apellido" name="apellido" required />
         </div> 
 
-        <div class="form-group">
-            <label for="usuario_asignado"></label>
-            <select name="usuario_asignado" id="usuario_asignado" class="form-control"> 
+        <div class="mt-2">
+            <label for="rol_asignado">Rol</label>
+            <select class="block mt-1 w-full" name="rol_asignado" id="rol_asignado" > 
                 <option value="">Seleccione una opcion</option>               
                 @foreach ($roles as $rol)
                     <option value="{{ $rol['id'] }}">{{$rol['name']}}</option>
                 @endforeach
             </select>
         </div>
-
-
-
-        <div class="form-group">
-            <label for="estado">Estado</label>
-            <select class="form-control" id="estado" name="estado" required>
-                <option value="Sin asignar">Sin Asignar</option>
-                <option value="Asignado">Asignado</option>
-            </select>
+       <!-- User -->
+        <div class="mt-2">
+            <x-input-label for="user" :value="__('Usuario')" />
+            <x-text-input id="user" class="block mt-1 w-full" type="text" name="user" :value="old('user')" required  autocomplete="user" />
+            <x-input-error :messages="$errors->get('user')" class="mt-2" />
         </div>
-        <div class="form-group">
-            <label for="estado_caso">Estado del Caso</label>
-            <select class="form-control" id="estado_caso" name="estado_caso" required>
-                <option value="No iniciado">No Iniciado</option>
-                <option value="En proceso">En Proceso</option>
-                <option value="Completado">Completado</option>
-                <option value="Anulado">Anulado</option>
-            </select>
+
+        <!-- Email Address -->
+        <div class="mt-2">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        <div class="form-group">
-            <label for="tipo_urgencia">Tipo de Urgencia</label>
-            <select class="form-control" id="tipo_urgencia" name="tipo_urgencia" required>
-                <option value="baja">Baja</option>
-                <option value="media">Media</option>
-                <option value="alta">Alta</option>
-            </select>
+
+        <!-- Password -->
+        <div class="mt-2">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
+
+        <!-- Confirm Password -->
+        <div class="mt-2">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                            type="password"
+                            name="password_confirmation" required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+        <input id="estado" type="hidden" name="estado" value="Activo">   
+        <x-primary-button class="mt-2">
+            {{ __('Crear') }}
+        </x-primary-button>
     </form>
-    <a href="{{ route('casos.index') }}" class="btn btn-secondary mb-3">Regresar</a>
+    <a href="{{ route('usuarios.index') }}" class="btn btn-secondary ">Regresar</a>
 
 </div>
-    </div>
+    
 </div>
 </x-app-layout>

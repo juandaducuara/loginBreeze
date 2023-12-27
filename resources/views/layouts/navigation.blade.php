@@ -16,17 +16,24 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+               
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('casos.index')" :active="request()->routeIs('casos.index')">
+                    <x-nav-link :href="route('casos.index')" :active="request()->routeIs(['casos.index','casos.create','casos.edit','casos.show'])">
                         {{ __('Casos') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
+                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs(['usuarios.index','usuarios.create','usuarios.edit','usuarios.show'])">
                         {{ __('Usuarios') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('asignarRol.index')" :active="request()->routeIs('asignarRol.index')">
+                        {{ __('Asignar Rol') }}
+                    </x-nav-link>
+                </div>
             </div>
+            
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -45,7 +52,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Ver Perfil') }}
                         </x-dropdown-link>
                         
                         <!-- Authentication -->
@@ -55,7 +62,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Cerrar Session') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -80,11 +87,14 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('casos.index')" :active="request()->routeIs('casos.index')">
+            <x-responsive-nav-link :href="route('casos.index')" :active="request()->routeIs(['casos.index','casos.create','casos.edit','casos.show'])">
                 {{ __('Casos') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
+            <x-responsive-nav-link :href="route('usuarios.index')" :active="request()->routeIs(['usuarios.index','usuarios.create','usuarios.edit','usuarios.show'])">
                 {{ __('Usuarios') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('asignarRol.index')" :active="request()->routeIs(['asignarRol.index'])">
+                {{ __('Asignar Rol') }}
             </x-responsive-nav-link>
         </div>
 
@@ -97,7 +107,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    {{ __('Ver perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -107,7 +117,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar session') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

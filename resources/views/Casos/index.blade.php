@@ -4,7 +4,11 @@
     <div class="mx-auto p-2" style="width: 25%;">
         <h1>Listado de Casos de Mesa de Ayuda</h1>
     </div>
-    
+    @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+    @endif
     <a href="{{ route('casos.create') }}" class="btn btn-success mb-3">Crear Nuevo Caso</a>
 
     <table class="table ">

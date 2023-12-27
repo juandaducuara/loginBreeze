@@ -26,8 +26,8 @@
 
                 <div class="col-md-8">
                   <label for="descripcion_caso" class="form-label"><strong>Descripcion</strong></label>
-                  <div class="input-group">                    
-                    <p for="descripcion_caso" class="form-label">{{$caso->descripcion_caso}}</p>
+                  <div class="input-group">   
+                    <p class="form-label" for="descripcion_caso">{!! nl2br(e($caso->descripcion_caso)) !!}</p>
                   </div>
                   
                 </div>             

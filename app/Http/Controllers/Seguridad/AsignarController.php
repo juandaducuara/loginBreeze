@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Seguridad;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
-class RolesController extends Controller
+class AsignarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = Role::select('id','name')->with('permissions')->orderByDesc('id')->paginate(6);
-        return view('seguridad.rol', compact('roles'));
+        $users= User::all();        
+        return view('seguridad.listarUsuarios', compact('users'));
     }
 
     /**
@@ -37,8 +38,7 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::create(['name' => $request->get('name')]);
-        return view('seguridad.rol', compact('role'));
+        //
     }
 
     /**
@@ -60,7 +60,9 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::find($id);
+        $roles=Role::all();
+        return view('seguridad.rolesUsuario',compact('user','roles'));
     }
 
     /**
@@ -72,7 +74,10 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $user->roles()->sync($request->roles);     
+        return redirect()->route('asignarRol.edit',$user)
+                         ->with('success', 'Rol actualizado exitosamente.');   
     }
 
     /**
