@@ -19,4 +19,9 @@ class Caso extends Model
         'estado_caso',
         'tipo_urgencia',
     ];
+    public function usuarioRegistrante()
+    {
+        // Retorna la relación "belongsTo" con el modelo User
+        return $this->belongsTo(User::class, 'usuario_registra');
+    }
 }

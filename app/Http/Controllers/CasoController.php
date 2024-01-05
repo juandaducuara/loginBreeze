@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Caso;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class CasoController extends Controller
 {    
     public function index()
     {
-        $casos = Caso::all();
-        $users = User::all();
-        return view('casos.index', compact('casos','users'));
+        // Obtener todos los casos con la relación "usuarioRegistrante" cargada
+        $casos = Caso::with('usuarioRegistrante')->get();       
+        return view('casos.index', compact('casos'));
     }
     public function listacaso()
     {
@@ -37,7 +38,7 @@ class CasoController extends Controller
 
         Caso::create($request->all());
 
-        return redirect()->route('casos.index')
+        return redirect()->route('casos.miCasos')
                          ->with('success', 'Caso creado exitosamente.');
     }
 
@@ -75,9 +76,21 @@ class CasoController extends Controller
         return redirect()->route('casos.index')
                          ->with('success', 'Caso eliminado exitosamente.');
     }
-    public function misCasos($user)
+    public function misCasos()
     {
-        $caso = Caso::find($user);
-        return view('casos.show', compact('caso'));
+        $user = Auth::user();
+
+        // Verificar si el usuario está autenticado
+        if (!$user) {
+            // Redireccionar o manejar la lógica cuando el usuario no está autenticado
+            return redirect()->route('login');
+        }
+
+        // Obtener los casos asociados al usuario actual
+        $casos = Caso::with('usuarioRegistrante')->where('usuario_registra', $user->id)->get();
+
+
+        // Pasar los casos a la vista
+        return view('casos.misCasos', compact('casos'));
     }
 }

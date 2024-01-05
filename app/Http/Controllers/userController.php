@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role ;
 
 class userController extends Controller
@@ -17,10 +18,10 @@ class userController extends Controller
     {
         $this->middleware('can:crear:usuario')->only('create');
         $this->middleware('can:eliminar:usuario')->only('destroy');
+        $this->middleware('can:ver:usuario')->only('index');
     }
     public function index()
-    {
-        //
+    {        
         $users = User::all();
         return view('usuarios.index', compact('users'));
     }
@@ -31,8 +32,7 @@ class userController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {        
         $roles = Role::all();
         return view('usuarios.create',compact('roles'));
     }
@@ -51,7 +51,15 @@ class userController extends Controller
             // Agrega validaciones para los demás campos aquí
         ]);
 
-        User::create($request->all());
+        User::create([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'user' => $request->user,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'tipo_usuario' => $request->tipo_usuario,
+            'estado' => $request->estado,
+        ]);
 
         return redirect()->route('usuarios.index')
                          ->with('success', 'Usuario creado exitosamente.');
@@ -91,8 +99,16 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {    
-        $user = User::find($id);
-        $user->update($request->all());
+        $user = User::find($id);        
+        $user->update([
+            'nombre' => $request->nombre,
+            'apellido' => $request->apellido,
+            'user' => $request->user,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'tipo_usuario' => $request->tipo_usuario,
+            'estado' => $request->estado,
+        ]);
         return redirect()->route('usuarios.index')
                          ->with('success', 'usuario actualizado exitosamente.');       
     }

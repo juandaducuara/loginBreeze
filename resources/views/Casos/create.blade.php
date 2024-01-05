@@ -10,7 +10,8 @@
             <label for="titulo">Título</label>
             <input type="text" class="form-control" id="titulo" name="titulo" required>
         </div> 
-            <input type="hidden" class="form-control" id="usuario_registra" name="usuario_registra" required value="{{Auth::user()->nombre}} {{Auth::user()->apellido}}" >
+            <!-- Usuario que registras-->
+            <input type="hidden" class="form-control" id="usuario_registra" name="usuario_registra" required value="{{Auth::user()->id}}" >
         <div class="form-group">
             <label for="fecha_solucion">Fecha de Solución (Opcional)</label>
             <input type="date" class="form-control" id="fecha_solucion" name="fecha_solucion">

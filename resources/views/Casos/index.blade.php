@@ -30,7 +30,7 @@
                 <td>{{ $caso->id }}</td>
                 <td>{{ $caso->titulo }}</td>
                 <td>{{ $caso->fecha_registro }} </td>
-                <td>{{ $caso->usuario_registra }}</td>
+                <td>{{ $caso->usuarioRegistrante->nombre }} {{ $caso->usuarioRegistrante->apellido }}</td>
                 <td>{{ $caso->estado }}</td>
                 <td>{{ $caso->estado_caso }}</td>
                 <td>{{ $caso->tipo_urgencia }}</td>

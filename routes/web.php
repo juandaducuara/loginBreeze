@@ -52,5 +52,6 @@ Route::resource('casos', CasoController::class);
 Route::resource('seguimiento', SeguimientoController::class);
 Route::resource('usuarios', userController::class);
 Route::resource('asignarRol',AsignarController::class)->names('asignarRol');
+Route::get('/misCasos',[CasoController::class,'misCasos'])->name('misCasos');
 
 require __DIR__.'/auth.php';
